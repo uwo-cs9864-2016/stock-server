@@ -99,12 +99,13 @@ app.delete('/register', (req, res) => {
   });
 });
 
+
 app.get('/serv/:command', (req, res, next) => {
   let token = req.query.token;
   if (token !== cfg.secret) {
     res.status(403).json({
       success: false,
-      err: new Error('Rejected token')
+      err: 'RejectedToken'
     });
   } else {
     switch (req.params.command) {
